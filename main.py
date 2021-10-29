@@ -1,7 +1,6 @@
 import os
 import discord
-import requests
-import json
+from communicator import get_basic
 
 secret = os.environ['secret'];
 
@@ -17,6 +16,12 @@ async def on_ready():
 async def on_message(message):
   if message.author == client.user:
     return
+  if message.content.startswith("$test"):
+    await message.channel.send("Test success")
+
+  if message.content.startswith("$basic"):
+    await message.channel.send(get_basic(message.content.split()[1]))
+
   
 
 
