@@ -1,6 +1,6 @@
 import os
 import discord
-from communicator import get_basic
+from communicator import get_desc, get_pe
 
 secret = os.environ['secret'];
 
@@ -19,8 +19,11 @@ async def on_message(message):
   if message.content.startswith("$test"):
     await message.channel.send("Test success")
 
-  if message.content.startswith("$basic"):
-    await message.channel.send(get_basic(message.content.split()[1]))
+  if message.content.startswith("$desc"):
+    await message.channel.send(get_desc(message.content.split()[1]))
+
+  if message.content.startswith("$pe"):
+    await message.channel.send(get_pe(message.content.split()[1]))
 
   
 
